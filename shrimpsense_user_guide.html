@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0f766e">
+<title>ShrimpSense | User Guide</title>
+<style>
+  :root {
+    --primary: #0f766e;
+    --primary-dark: #115e59;
+    --accent: #f59e0b;
+    --danger: #dc2626;
+    --text: #1f2937;
+    --muted: #64748b;
+    --bg: #f5f8f7;
+    --card: #ffffff;
+    --border: #e2e8f0;
+    --soft: #ecfdf5;
+    --warning: #fff7ed;
+    --shadow: 0 8px 24px rgba(15, 118, 110, 0.08);
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.55;
+  }
+
+  .container {
+    width: min(100% - 32px, 760px);
+    margin: 0 auto;
+  }
+
+  header {
+    background: linear-gradient(145deg, var(--primary-dark), var(--primary));
+    color: white;
+    padding: 42px 0 34px;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .brand-icon {
+    width: 52px;
+    height: 52px;
+    display: grid;
+    place-items: center;
+    border-radius: 16px;
+    background: rgba(255,255,255,.15);
+    font-size: 28px;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: clamp(30px, 8vw, 44px);
+    line-height: 1.05;
+  }
+
+  .subtitle {
+    margin: 7px 0 0;
+    font-size: 16px;
+    opacity: .92;
+  }
+
+  .intro {
+    margin-top: 28px;
+    padding: 16px 18px;
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 14px;
+    background: rgba(255,255,255,.1);
+    font-size: 14px;
+  }
+
+  main {
+    padding: 28px 0 50px;
+  }
+
+  .section {
+    margin-bottom: 24px;
+  }
+
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 13px;
+    font-size: 22px;
+    line-height: 1.25;
+  }
+
+  .section-number {
+    min-width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    border-radius: 10px;
+    background: var(--primary);
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .step {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 12px;
+    box-shadow: var(--shadow);
+  }
+
+  .step-label {
+    color: var(--primary);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .step h3 {
+    margin: 0 0 11px;
+    font-size: 18px;
+  }
+
+  .location {
+    display: inline-block;
+    margin-bottom: 12px;
+    padding: 5px 9px;
+    border-radius: 8px;
+    background: var(--soft);
+    color: var(--primary-dark);
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  ul {
+    margin: 0;
+    padding-left: 21px;
+  }
+
+  li + li { margin-top: 7px; }
+
+  .warning {
+    padding: 14px;
+    margin: 0 0 14px;
+    border-left: 4px solid var(--accent);
+    border-radius: 10px;
+    background: var(--warning);
+  }
+
+  .warning strong {
+    display: block;
+    margin-bottom: 3px;
+  }
+
+  .option {
+    padding: 15px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin-top: 10px;
+  }
+
+  .option strong {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--primary-dark);
+  }
+
+  .important {
+    border-left-color: var(--danger);
+    background: #fef2f2;
+  }
+
+  .important strong { color: var(--danger); }
+
+  .reminders {
+    background: var(--primary-dark);
+    color: white;
+    border-radius: 18px;
+    padding: 22px;
+  }
+
+  .reminders h2 {
+    margin: 0 0 13px;
+    font-size: 21px;
+  }
+
+  .reminders ul { padding-left: 21px; }
+
+  footer {
+    text-align: center;
+    padding: 22px 16px 34px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  .top-button {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    width: 44px;
+    height: 44px;
+    border: 0;
+    border-radius: 50%;
+    background: var(--primary);
+    color: white;
+    font-size: 20px;
+    box-shadow: 0 5px 18px rgba(0,0,0,.18);
+    cursor: pointer;
+  }
+
+  @media (min-width: 700px) {
+    .step { padding: 24px; }
+    main { padding-top: 36px; }
+  }
+</style>
+</head>
+
+<body>
+<header>
+  <div class="container">
+    <div class="brand">
+      <div class="brand-icon">🦐</div>
+      <div>
+        <h1>ShrimpSense</h1>
+        <p class="subtitle">User Guide</p>
+      </div>
+    </div>
+
+    <div class="intro">
+      Shrimp Counting &amp; Feed Optimization System<br>
+      Follow the steps below to safely operate the ShrimpSense system.
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="section">
+    <h2 class="section-title"><span class="section-number">01</span> Before You Start</h2>
+
+    <article class="step">
+      <div class="step-label">Step 1</div>
+      <h3>Fill the Water Tank</h3>
+      <span class="location">📍 Water Tank</span>
+      <ul>
+        <li>Locate the <strong>Water Tank</strong> door at the lower-right compartment.</li>
+        <li>Open the door labeled <strong>“Water Tank.”</strong></li>
+        <li>Fill the internal water tank with <strong>clean water suitable for shrimp</strong>.</li>
+        <li>Make sure there is enough water for the waterflow system to operate properly.</li>
+      </ul>
+    </article>
+
+    <article class="step">
+      <div class="step-label">Step 2</div>
+      <h3>Check the Main Switch</h3>
+      <span class="location">📍 Lower-left compartment</span>
+      <ul>
+        <li>Locate the lower-left compartment door.</li>
+        <li>Open the door to access the electrical box.</li>
+        <li>The <strong>Main Switch</strong> is on the left side of the electrical box.</li>
+        <li>Make sure the switch is set to <strong>OFF</strong>.</li>
+      </ul>
+    </article>
+
+    <article class="step">
+      <div class="step-label">Step 3</div>
+      <h3>Connect the Power</h3>
+      <ul>
+        <li>Make sure the <strong>Main Switch is set to OFF</strong>.</li>
+        <li>Plug the prototype's <strong>power cord into a suitable wall outlet or power source</strong>.</li>
+        <li>Once the power cord is connected, you may proceed to turn the <strong>Main Switch to ON</strong>.</li>
+      </ul>
+    </article>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title"><span class="section-number">02</span> Power On</h2>
+
+    <article class="step">
+      <div class="step-label">Step 4</div>
+      <h3>Turn On the Main Switch</h3>
+      <ul>
+        <li>Manually flip the external Main Switch to <strong>ON</strong>.</li>
+        <li>The <strong>Raspberry Pi</strong> and <strong>touchscreen console</strong> will automatically boot up.</li>
+        <li>Wait for the touchscreen console to finish starting before proceeding.</li>
+      </ul>
+    </article>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title"><span class="section-number">03</span> Prepare the Feed Dispenser</h2>
+
+    <article class="step">
+      <div class="step-label">Step 5</div>
+      <h3>Add Feed</h3>
+      <span class="location">📍 Feed Dispenser</span>
+      <ul>
+        <li>Locate the <strong>Feed Dispenser</strong> on the left side of the compartment.</li>
+        <li>On the touchscreen console, open the <strong>feeding wheel interface</strong>.</li>
+        <li>Spin the feeding wheel until the opening is positioned at the <strong>top</strong>.</li>
+        <li>Manually pour the feed into the dispenser through the opening.</li>
+        <li>Make sure the feed is <strong>loaded before starting</strong>.</li>
+      </ul>
+    </article>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title"><span class="section-number">04</span> Choose Counting Option</h2>
+
+    <article class="step">
+      <div class="step-label">Step 6</div>
+      <h3>Choose Your Counting Option</h3>
+
+      <div class="option">
+        <strong>Option 1 — Count All Shrimp</strong>
+        Use this option if you want the system to count all the shrimp you will load. You may proceed without setting a specific target count.
+      </div>
+
+      <div class="option">
+        <strong>Option 2 — Set a Target Count</strong>
+        Use this option if you only need to count a specific number of shrimp. Enter the desired target shrimp count on the touchscreen console. The system will count the shrimp until the target count is reached.
+      </div>
+    </article>
+
+    <article class="step">
+      <div class="step-label">Step 7</div>
+      <h3>Start the Waterflow System</h3>
+      <ul>
+        <li>Press the button on the touchscreen console to <strong>start the waterflow system</strong>.</li>
+        <li>Wait for the water to flow properly before loading the shrimp.</li>
+      </ul>
+    </article>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title"><span class="section-number">05</span> Load the Shrimp</h2>
+
+    <article class="step">
+      <div class="step-label">Step 8</div>
+      <h3>Load the Post-Larval Shrimp</h3>
+      <span class="location">📍 Loading Area</span>
+
+      <div class="warning important">
+        <strong>⚠️ Important</strong>
+        Load the shrimp gradually. Do not pour all the shrimp into the Loading Area at once.
+      </div>
+
+      <ul>
+        <li>Locate the <strong>Loading Area</strong> at the top-left section of the prototype.</li>
+        <li>This is the <strong>2nd station</strong>, labeled “Loading Area.”</li>
+        <li>Pour the post-larval shrimp into the loading area <strong>gradually</strong>.</li>
+        <li>Loading too many shrimp at once may cause the system to become blocked.</li>
+        <li>Allow the shrimp to pass smoothly through the <strong>slide and imaging station</strong>.</li>
+      </ul>
+    </article>
+
+    <article class="step">
+      <div class="step-label">Step 9</div>
+      <h3>Automatic Counting</h3>
+      <ul>
+        <li>The system will automatically detect and count the shrimp as they pass through the imaging station.</li>
+        <li>Continue loading the shrimp gradually.</li>
+        <li>If you selected <strong>Count All Shrimp</strong>, continue loading until all the shrimp you want to count have passed through the system.</li>
+        <li>If you selected <strong>Set a Target Count</strong>, the system will continue counting until the target shrimp count is reached.</li>
+      </ul>
+    </article>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title"><span class="section-number">06</span> View Results</h2>
+
+    <article class="step">
+      <div class="step-label">Step 10</div>
+      <h3>Check the Shrimp Count and Biomass</h3>
+      <ul>
+        <li>Check the <strong>final shrimp count</strong> displayed on the touchscreen console.</li>
+        <li>The system will calculate the <strong>biomass</strong> based on the counted shrimp.</li>
+        <li>Review the displayed biomass result before proceeding.</li>
+      </ul>
+    </article>
+
+    <article class="step">
+      <div class="step-label">Step 11</div>
+      <h3>Check the Feed Recommendation</h3>
+      <ul>
+        <li>The system will provide a <strong>recommended amount of feed</strong> based on the calculated biomass.</li>
+        <li>Review the recommended feed amount displayed on the touchscreen console.</li>
+      </ul>
+    </article>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title"><span class="section-number">07</span> Dispense Feed</h2>
+
+    <article class="step">
+      <div class="step-label">Step 12</div>
+      <h3>Dispense the Recommended Feed</h3>
+      <ul>
+        <li>When you are ready to dispense the recommended feed, press the <strong>Feed Dispense</strong> button on the touchscreen console.</li>
+        <li>The feed dispenser will release the recommended amount of feed.</li>
+        <li>Wait until the dispensing process is complete.</li>
+      </ul>
+    </article>
+
+    <article class="step">
+      <div class="step-label">Step 13</div>
+      <h3>Collect the Dispensed Feed</h3>
+      <span class="location">📍 Collection Box</span>
+      <ul>
+        <li>Locate the <strong>collection box</strong> underneath the Feed Dispenser.</li>
+        <li>Once dispensing is complete, carefully remove the collection box.</li>
+        <li>Collect the dispensed feed from the box.</li>
+      </ul>
+    </article>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title"><span class="section-number">08</span> Collect the Shrimp</h2>
+
+    <article class="step">
+      <div class="step-label">Step 14</div>
+      <h3>Collect the Counted Shrimp</h3>
+      <span class="location">📍 Collection Area</span>
+      <ul>
+        <li>At the far-right end of the waterflow system, locate the area labeled <strong>“Collection Area.”</strong></li>
+        <li>The <strong>catcher/strainer</strong> is located in this area.</li>
+        <li>The catcher has a built-in water storage area and <strong>wire mesh at the top corners</strong>.</li>
+        <li>Carefully lift the catcher/strainer to collect the counted shrimp.</li>
+        <li>The shrimp will be collected together with water to help keep them safe.</li>
+        <li>Transfer the shrimp to the desired <strong>container or pond</strong>.</li>
+      </ul>
+    </article>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title"><span class="section-number">09</span> Shut Down</h2>
+
+    <article class="step">
+      <div class="step-label">Step 15</div>
+      <h3>Shut Down the Raspberry Pi</h3>
+      <ul>
+        <li>Use the touchscreen console to properly <strong>shut down the Raspberry Pi</strong>.</li>
+        <li>Wait until the system has completely shut down.</li>
+      </ul>
+    </article>
+
+    <article class="step">
+      <div class="step-label">Step 16</div>
+      <h3>Turn Off the Main Switch</h3>
+      <ul>
+        <li>Set the <strong>Main Switch</strong> to <strong>OFF</strong>.</li>
+      </ul>
+    </article>
+
+    <article class="step">
+      <div class="step-label">Step 17</div>
+      <h3>Unplug the Prototype</h3>
+      <ul>
+        <li>Unplug the prototype's <strong>power cord from the wall outlet or power source</strong>.</li>
+      </ul>
+    </article>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title"><span class="section-number">10</span> Extended Storage</h2>
+
+    <article class="step">
+      <div class="step-label">For 3–5 Days or Longer</div>
+      <h3>Prepare the Prototype for Extended Non-Use</h3>
+      <ul>
+        <li><strong>Remove the remaining water</strong> from the water tank and waterflow system.</li>
+        <li><strong>Remove any remaining feed</strong> from the Feed Dispenser.</li>
+        <li><strong>Clean the prototype</strong> and remove any shrimp or feed residue.</li>
+        <li><strong>Dry the prototype thoroughly</strong> before storing or leaving it unused.</li>
+        <li>Keep the prototype clean and dry to help prevent buildup, blockage, and other issues.</li>
+      </ul>
+    </article>
+  </section>
+
+  <section class="reminders">
+    <h2>⚠️ Important Reminders</h2>
+    <ul>
+      <li>Always make sure the <strong>Main Switch is OFF</strong> before plugging in the power cord.</li>
+      <li>Always use <strong>water suitable for shrimp</strong>.</li>
+      <li>Always load post-larval shrimp <strong>gradually</strong> to prevent blockage.</li>
+      <li>Do not pour all the shrimp into the <strong>Loading Area</strong> at once.</li>
+      <li>Review the <strong>shrimp count, biomass, and feed recommendation</strong> on the touchscreen after counting.</li>
+      <li>Only press the <strong>Feed Dispense</strong> button when you are ready to dispense the recommended feed.</li>
+      <li>Properly <strong>shut down the Raspberry Pi before turning OFF the Main Switch</strong>.</li>
+      <li>Always unplug the prototype from the <strong>wall outlet or power source</strong> after shutting it down.</li>
+      <li>If the prototype will not be used for several days, <strong>remove the water and feed, then clean and dry the prototype</strong>.</li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  <strong>ShrimpSense</strong><br>
+  Shrimp Counting &amp; Feed Optimization System
+</footer>
+
+<button class="top-button" onclick="window.scrollTo({top:0, behavior:'smooth'})" aria-label="Back to top">↑</button>
+
+</body>
+</html>
